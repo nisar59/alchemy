@@ -1,0 +1,52 @@
+/*.extends{
+	transition: width 1s, height 1s;
+}*/
+.extends{
+	position: fixed;
+    width: 60%;
+    height: 75% !important;
+    margin: auto;
+    z-index: 1111;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+}
+.element{
+    transition: width 3s, height 1s ;
+}
+
+.element textarea{
+  outline: none;
+}
+.project-name{
+  outline: none;
+}
+
+.element .heading{
+  position: sticky;
+}
+::placeholder{
+  color: black;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: green;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: green;
+}
