@@ -14,7 +14,7 @@ Documents
             <div class="col-4 text-center heading-container">
                 <p>COLLABORATION MADE EASY</p>
                 <p class="fw-bold text-white">STRATEGIC COLLABORATION DESIGN WORKSHEET</p>
-                <input type="" name="project_name" value="{{$data->project_name}}" placeholder="Name of Project" class="fw-bold border-0 text-center bg-warning project-name">
+                <input type="" name="project_name" value="{{$data->project_name}}" placeholder="Name of Project" class="fw-bold border-0 text-center bg-warning project-name fields">
             </div>
             <div class="col-4 text-end">
                 <button type="button" id="fake-submit" class="btn btn-sm btn-outline-secondary text-white border-white">Save</button>
@@ -27,26 +27,26 @@ Documents
                 <div class="h-25 pb-2 element">
                     <div class="bg-white h-100 overflow-hidden pb-2">
                         <h4 class="fw-bold fs-5 heading mt-2 ms-2">Topic:</h4>
-                        <textarea rows="0" name="topic" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->topic}}</textarea>
+                        <textarea rows="0" name="topic" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->topic}}</textarea>
                     </div>
                 </div>
                 <div class="h-75 pt-2 element">
                     <div class="bg-white h-100 overflow-hidden pb-2">
                         <h4 class="fw-bold fs-5 heading mt-2 ms-2">Situation Summary:</h4>
-                        <textarea rows="0" name="summery" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->summery}}</textarea>
+                        <textarea rows="0" name="summery" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->summery}}</textarea>
                     </div>
                 </div>
             </div>
             <div class="col-4 p-2" style="height:50vh;">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2">3.Actions</h4>
-                <textarea rows="0" name="action" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->action}}</textarea>
+                <textarea rows="0" name="action" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->action}}</textarea>
                 </div>
             </div>
             <div class="col-4 p-2" style="height:50vh;">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: limegreen;" class="text-white fw-bold me-3 ps-2 pe-2">G</span>2.Required Outcomes</h4>
-                <textarea rows="0" name="outcomes" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->outcomes}}</textarea>
+                <textarea rows="0" name="outcomes" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->outcomes}}</textarea>
                 </div>
             </div>
         </div>
@@ -54,20 +54,20 @@ Documents
             <div class="col-4 p-2" style="height:50vh;">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: darkred;" class="text-white fw-bold me-3 ps-2 pe-2">A</span>1.Case for Action</h4>
-                <textarea rows="0" name="case_for_action" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->case_for_action}}</textarea>
+                <textarea rows="0" name="case_for_action" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->case_for_action}}</textarea>
                 </div>
             </div>
             <div class="col-4 p-2" style="height:50vh;">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: orange;" class="text-white fw-bold me-3 ps-2 pe-2">B</span>4.Barrier To Success</h4>
-                <textarea rows="0" name="barrier_to_success" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->barrier_to_success}}</textarea>
+                <textarea rows="0" name="barrier_to_success" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->barrier_to_success}}</textarea>
 
                 </div>
             </div>
             <div class="col-4 p-2" style="height:50vh;">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: blue;" class="text-white fw-bold me-3 ps-2 pe-2">4</span>5.Unintended Negative Consequences</h4>
-                <textarea rows="0" name="consequences" class="w-100 h-100 border-0 overflow-auto p-2">{{$data->consequences}}</textarea>
+                <textarea rows="0" name="consequences" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->consequences}}</textarea>
                 </div>
             </div>
         </div>
@@ -116,6 +116,28 @@ $(document).on('click','#fake-submit', function(e) {
         }
     });
 
+});
+
+
+$(document).on('change', '.fields', function() {
+    var data=$("#project-form").serialize()
+
+    $.ajax({
+        url:"{{url('documents/ajax-update/'.$data->id)}}",
+        method:"POST",
+        data:data,
+        success:function(res){
+            if(res.success){
+                success(res.message);
+            }else{
+                error(res.message);
+            }
+
+        },
+        error:function(error) {
+            error("something went wrong, please reload the page and try again");
+        }
+    });
 });
 
 });

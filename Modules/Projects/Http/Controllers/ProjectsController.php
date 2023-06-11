@@ -20,6 +20,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
+    Projects::where(['password'=>Null, 'project_name'=>null,'topic'=>null,'summery'=>null,'action'=>null,'outcomes'=>null,'case_for_action'=>null,'barrier_to_success'=>null,'consequences'=>null
+            ])->delete();
+    
     $req=request();
     if ($req->ajax()) {
         $strt   = $req->start;
@@ -81,6 +84,36 @@ class ProjectsController extends Controller
      */
     public function create()
     {
+
+        DB::beginTransaction();
+        try {
+            $inputs=[
+            'password'=>Null, 
+            'project_name'=>null,
+            'topic'=>null,
+            'summery'=>null,
+            'action'=>null,
+            'outcomes'=>null,
+            'case_for_action'=>null,
+            'barrier_to_success'=>null,
+            'consequences'=>null
+            ];
+
+            $pro=Projects::create($inputs);
+            DB::commit();
+            return redirect('documents/edit/'.$pro->id);
+
+        } catch (Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withInput()->with('error', 'Something went wrong with this error: '.$e->getMessage());
+        }
+        catch(Throwable $e){
+            DB::rollback();
+            return redirect()->back()->withInput()->with('error', 'Something went wrong with this error: '.$e->getMessage());
+        }
+
+
+
         return view('projects::create');
     }
 
@@ -110,7 +143,7 @@ class ProjectsController extends Controller
 
             $pro=Projects::create($inputs);
             DB::commit();
-            return redirect('projects/edit/'.$pro->id)->with('success', 'Project successfully created');
+            return redirect('documents/edit/'.$pro->id)->with('success', 'Project successfully created');
 
         } catch (Exception $e) {
             DB::rollback();
@@ -171,7 +204,6 @@ class ProjectsController extends Controller
             'barrier_to_success'=>'required',
             'consequences'=>'required'
         ]);
-
         DB::beginTransaction();
         try {
             $inputs=$req->except('_token');
@@ -189,6 +221,37 @@ class ProjectsController extends Controller
             return redirect()->back()->withInput()->with('error', 'Something went wrong with this error: '.$e->getMessage());
         }
     }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param int $id
+     * @return Renderable
+     */
+    public function ajaxupdate(Request $req, $id)
+    {
+
+        DB::beginTransaction();
+        try {
+            $inputs=$req->except('_token');
+
+            $user=Projects::find($id)->update($inputs);
+            DB::commit();
+            return response()->json(['success'=>true, 'message'=>'Project successfully updated']);
+
+        } catch (Exception $e) {
+            DB::rollback();
+            return response()->json(['success'=>false, 'message'=>'Something went wrong with this error: '.$e->getMessage()]);
+        }
+        catch(Throwable $e){
+            DB::rollback();
+            return response()->json(['success'=>false, 'message'=>'Something went wrong with this error: '.$e->getMessage()]);
+        }
+    }
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -28,6 +28,7 @@ Route::group(['prefix'=>'documents'],function(){
 Route::group(['prefix'=>'documents','middleware' => ['auth']],function(){
     Route::get('/edit/{id}', 'ProjectsController@edit');
     Route::POST('/update/{id}', 'ProjectsController@update');
+    Route::POST('/ajax-update/{id}', 'ProjectsController@ajaxupdate');
     Route::get('/status/{id}', 'ProjectsController@status');
 
 });
