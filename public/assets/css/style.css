@@ -20,6 +20,9 @@
 .element textarea{
   outline: none;
 }
+.extends textarea{
+  font-size: 22px;
+}
 .project-name{
   outline: none;
 }
