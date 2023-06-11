@@ -42,6 +42,7 @@ Login
                     <input type="checkbox" name="remember" class="form-check-input" id="customControlInline">
                     <label class="form-check-label" for="customControlInline">Remember me</label>
                   </div>
+                   <a href="{{url('password/reset')}}">Forgot Password</a>
                 </div>
                 <div class="col-sm-6 text-end">
                   <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>

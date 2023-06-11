@@ -1,48 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{Settings()->portal_name}}</title>
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{asset('assets/css/app.min.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/bundles/bootstrap-social/bootstrap-social.css')}}">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
-  <!-- Custom style CSS -->
-  <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
-  <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
-</head>
-
-<body>
-  <div class="loader"></div>
-  <div id="app">
-    <section class="section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <img src="{{url('public/img/settings/'.Settings()->portal_logo)}}" width="50" height="50" class="m-2">
-            <h2>{{Settings()->portal_name}}</h2>
-          </div>
-          <div class="col-md-6 offset-md-3">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4>Login</h4>
-              </div>
-              <div class="card-body">
+@extends('layouts.app')
+@section('title')
+Login
+@endsection
+@section('content')
+<div class="wrapper-page account-page-full">
+  <div class="card shadow-none">
+    <div class="card-block">
+      <div class="account-box">
+        <div class="card-box shadow-none p-4">
+          <div class="p-2">
+            <div class="text-center mt-4">
+              <a href="{{url()->current()}}"><img width="100" src="{{url('public/img/settings/'.Settings()->portal_favicon)}}" alt="logo"></a>
+            </div>
+            <h4 class="font-size-18 mt-5 text-center">Welcome Back !</h4>
+            <p class="text-muted text-center">Enter Password to continue to {{Settings()->portal_name}}.</p>
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label for="email" class="col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -53,10 +38,9 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                            <label for="password" class="col-form-label text-md-end">{{ __('Password') }}</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -68,9 +52,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <div class="col-md-12">
+                            <label for="password-confirm" class="col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
@@ -82,24 +66,19 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
-              </div>
-            </div>
+                    </form>>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-  <!-- General JS Scripts -->
-  <script src="{{asset('assets/js/app.min.js')}}"></script>
-  <!-- JS Libraies -->
-  <!-- Page Specific JS File -->
-  <!-- Template JS File -->
-  <script src="{{asset('assets/scripts.js')}}"></script>
-  <!-- Custom JS File -->
-  <script src="{{asset('assets/js/custom.js')}}"></script>
-</body>
+</div>
+@endsection
+@section('js')
+<script>
+$(document).ready(function() {
 
 
-<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
-</html>
+});
+</script>
+@endsection
