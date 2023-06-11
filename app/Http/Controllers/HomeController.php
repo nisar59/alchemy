@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Projects\Entities\Projects;
 use App\Models\User;
 use Carbon\Carbon;
 use Artisan;
@@ -32,7 +33,11 @@ class HomeController extends Controller
             'lock_screen_token'=>Hash::make(Auth::id().now()),
         ]);
 
-        return view('home');
+        $total=Projects::count();
+
+        $documents=Projects::latest()->limit(10)->get();
+
+        return view('home')->with('total',$total)->with('documents',$documents);
     }
 
 

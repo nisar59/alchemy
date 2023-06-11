@@ -26,7 +26,7 @@
 $(document).ready(function() {
     $(document).on('click','#submit', function() {
         var pscode=$("#passcode").val();
-        window.location.href="{{url('projects/show')}}?passcode="+pscode;
+        window.location.href="{{url('documents/show')}}?passcode="+pscode;
     });
 
 });

@@ -1,16 +1,16 @@
 
 @extends('layouts.template')
 @section('title')
-Projects
+Documents
 @endsection
 @section('content')
 <div class="page-title-box">
   <div class="row align-items-center">
     <div class="col-md-8">
-      <h6 class="page-title">Projects</h6>
+      <h6 class="page-title">Documents</h6>
       <ol class="breadcrumb m-0">
         <li class="breadcrumb-item">{{Settings()->portal_name}}</li>
-        <li class="breadcrumb-item">Projects</li>
+        <li class="breadcrumb-item">Documents</li>
         <li class="breadcrumb-item active">listing</li>
       </ol>
     </div>
@@ -44,9 +44,9 @@ Projects
     <div class="card card-primary">
       <div class="card-header bg-white">
         <div class="row">
-          <h4 class="col-md-6">Projects</h4>
+          <h4 class="col-md-6">Documents</h4>
           <div class="col-md-6 text-end">
-            <a href="{{url('projects/create')}}" class="btn btn-success">+</a>
+            <a href="{{url('documents/create')}}" class="btn btn-success">+</a>
           </div>
         </div>
       </div>
@@ -57,6 +57,7 @@ Projects
               <tr>
                 <th>Name</th>
                 <th>Password</th>
+                <th>Date</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -79,13 +80,14 @@ $(document).ready( function(){
       processing: true,
       serverSide: true,
       ajax: {
-        url:"{{url('projects')}}",
+        url:"{{url('documents')}}",
         data:data,
         },
       buttons:[],
       columns: [
             {data: 'project_name', name: 'project_name', class:'text-center'},
             {data: 'password', name: 'password', class:'text-center'},
+            {data: 'created_at', name: 'created_at', class:'text-center'},
             {data: 'action', name: 'action', orderable: false, class:"d-flex justify-content-center w-auto", searchable: false},
       ]
   });

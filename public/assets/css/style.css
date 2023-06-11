@@ -50,3 +50,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: green;
 }
+
+.heading-container p{
+  letter-spacing: 2px;
+}

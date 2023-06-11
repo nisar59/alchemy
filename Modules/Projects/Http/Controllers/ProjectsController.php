@@ -49,11 +49,11 @@ class ProjectsController extends Controller
                 ->addColumn('action', function ($row) {
                     $action='';
 
-                $action.='<a class="btn btn-success m-1 btn-sm" href="'.url('projects/show?passcode='.$row->password).'"><i class="fas fa-eye"></i></a>';
+                $action.='<a class="btn btn-success m-1 btn-sm" href="'.url('documents/show?passcode='.$row->password).'"><i class="fas fa-eye"></i></a>';
 
-                $action.='<a class="btn btn-primary m-1 btn-sm" href="'.url('projects/edit/'.$row->id).'"><i class="fas fa-pencil-alt"></i></a>';
+                $action.='<a class="btn btn-primary m-1 btn-sm" href="'.url('documents/edit/'.$row->id).'"><i class="fas fa-pencil-alt"></i></a>';
 
-                $action.='<a class="btn btn-danger m-1 btn-sm" href="'.url('projects/destroy/'.$row->id).'"><i class="fas fa-trash-alt"></i></a>';
+                $action.='<a class="btn btn-danger m-1 btn-sm" href="'.url('documents/destroy/'.$row->id).'"><i class="fas fa-trash-alt"></i></a>';
 
                 return $action;
                 })
@@ -64,6 +64,10 @@ class ProjectsController extends Controller
                 ->editColumn('password', function ($row) {
                     return $row->password;
                 })
+                ->editColumn('created_at', function ($row) {
+                    return Carbon::parse($row->created_at)->format('d-m-Y');
+                })
+
                 ->rawColumns(['action'])
                 ->make(true);
     }

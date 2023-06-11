@@ -29,11 +29,11 @@ $type = Request()->type;
                 </li>
                 
                
-                <li class="menu-title">Projects</li>
+                <li class="menu-title">Documents</li>
                 <li>
-                    <a href="{{url('projects')}}" class="waves-effect">
-                        <i class="fas fa-tv"></i>
-                        <span>Projects</span>
+                    <a href="{{url('documents')}}" class="waves-effect">
+                        <i class="fas fa-file"></i>
+                        <span>Documets</span>
                     </a>
                 </li>
                

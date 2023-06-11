@@ -15,84 +15,55 @@ Dashboard
   </div>
 </div>
 <!-- end page title -->
-<div class="row">
-  <div class="col-xl-3 col-md-6">
-    <div class="card mini-stat text-dark" style="background:#E6F2FE; border-top: 4px solid #F77C0C;">
+<div class="row justify-content-center">
+  <div class="col-xl-6 col-md-6">
+    <div class="card mini-stat text-dark" style="background:#E6F2FE; border-top: 4px solid #006BA6;">
       <div class="card-body">
         <div class="mb-4">
-          <div class="float-start mini-stat-img me-4 text-white" style="background:#F77C0C;">
-            <i class="fas fa-users fa-lg"></i>
+          <div class="float-start mini-stat-img me-4 text-white" style="background:#006BA6;">
+            <i class="fas fa-file fa-lg"></i>
           </div>
-          <h5 class="fw-bold font-size-16 text-uppercase">Total clients </h5>
-          <h4 class="fw-bold font-size-24"></h4>
+          <h5 class="fw-bold font-size-16 text-uppercase">Total Documents</h5>
+          <h4 class="fw-bold font-size-24">{{number_format($total)}}</h4>
         </div>
         <div class="pt-2">
           <div class="float-end">
-            <a href="{{url('clients')}}" class="text-dark"><i class="mdi mdi-arrow-right h5"></i></a>
+            <a href="{{url('documents')}}" class="text-dark"><i class="mdi mdi-arrow-right h5"></i></a>
           </div>
-          <p class="text-dark mb-0 mt-1">Total Clients</p>
+          <p class="text-dark mb-0 mt-1">Total Documents</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-3 col-md-6">
-    <div class="card mini-stat text-dark" style="background:#E5DEF0; border-top: 4px solid #006BA6;">
-      <div class="card-body">
-        <div class="mb-4">
-          <div class="float-start mini-stat-img me-4 text-white" style="background:#006BA6">
-            <i class="fas fa-user-check fa-lg"></i>
-          </div>
-          <h5 class="fw-bold font-size-16 text-uppercase text-dark">Active clients</h5>
-          <h4 class="fw-bold font-size-24"></h4>
-        </div>
-        <div class="pt-2">
-          <div class="float-end">
-            <a href="{{url('clients?active=1')}}" class="text-dark"><i class="mdi mdi-arrow-right h5"></i></a>
-          </div>
-          <p class="text-dark mb-0 mt-1">Active Clients</p>
-        </div>
-      </div>
+
+<div class="col-md-6">
+  <div class="card card-primary">
+    <div class="card-header bg-white">
+      <h4>Recent Documents</h4>
     </div>
-  </div>
-  <div class="col-xl-3 col-md-6">
-    <div class="card mini-stat text-dark" style="background:#D6EDD9; border-top: 4px solid #333547;">
-      <div class="card-body">
-        <div class="mb-4">
-          <div class="float-start mini-stat-img me-4 text-white" style="background:#333547">
-            <i class="fas fa-money-bill-alt fa-lg"></i>
-          </div>
-          <h5 class="fw-bold font-size-16 text-uppercase text-dark">Cash in hand</h5>
-          <h4 class="fw-bold font-size-24"></h4>
-        </div>
-        <div class="pt-2">
-          <div class="float-end">
-            <a href="{{url('clients-subscriptions')}}" class="text-dark"><i class="mdi mdi-arrow-right h5"></i></a>
-          </div>
-          <p class="text-dark mb-0 mt-1">Cash In Hand</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-3 col-md-6">
-    <div class="card mini-stat text-dark" style="background:#F6F0D8; border-top: 4px solid #19C0CC;">
-      <div class="card-body">
-        <div class="mb-4">
-          <div class="float-start mini-stat-img me-4 text-white" style="background:#19C0CC">
-            <i class="fas fa-briefcase fa-lg"></i>
-          </div>
-          <h5 class="fw-bold font-size-16 text-uppercase text-dark">Deposits</h5>
-          <h4 class="fw-bold font-size-24"></h4>
-        </div>
-        <div class="pt-2">
-          <div class="float-end">
-            <a href="{{url('deposits')}}" class="text-dark"><i class="mdi mdi-arrow-right h5"></i></a>
-          </div>
-          <p class="text-dark mb-0 mt-1">Deposits</p>
-        </div>
-      </div>
+    <div class="card-body">
+        <table class="table table-sm table-bordered text-center">
+          <thead class="bg-primary text-white">
+              <th>Name</th>
+              <th>Password</th>
+              <th>Date</th>
+          </thead>
+          <tbody>
+            @foreach($documents as $document)
+            <tr>
+              <td>{{$document->project_name}}</td>
+              <td>{{$document->password}}</td>
+              <td>{{Carbon\Carbon::parse($document->created_at)->format('d-m-Y')}}</td>              
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
+
+</div>
+
 </div>
 @endsection
 @section('js')

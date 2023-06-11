@@ -3,7 +3,7 @@
     <head>
         
         <meta charset="utf-8">
-        <title>App</title>
+        <title>{{Settings()->portal_name}}-@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
         
