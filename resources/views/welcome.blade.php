@@ -1,4 +1,7 @@
 @extends('layouts.frontend-layout')
+@section('title')
+Welcome
+@endsection
 @section('content')
 <div class="wrapper">
     <div class="bg-warning h-100 position-absolute justify-content-center align-items-center d-flex">
