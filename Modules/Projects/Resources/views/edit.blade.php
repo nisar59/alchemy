@@ -11,10 +11,10 @@ Documents
             <img src="{{url('public/img/settings/'.Settings()->portal_logo)}}" class="w-50 h-50">
             </div>
 
-            <div class="col-4 text-center heading-container">
-                <p>COLLABORATION MADE EASY</p>
-                <p class="fw-bold text-white">STRATEGIC COLLABORATION DESIGN WORKSHEET</p>
-                <input type="" name="project_name" value="{{$data->project_name}}" placeholder="Name of Project" class="fw-bold border-0 text-center bg-warning project-name fields">
+            <div class="col-4 text-center text-black heading-container">
+                <p style="font-size:18px;">COLLABORATION MADE EASY</p>
+                <p style="font-size:26px;" class="fw-bold text-white">STRATEGIC COLLABORATION DESIGN WORKSHEET</p>
+                <input type="" style="font-size: 28px;" name="project_name" value="{{$data->project_name}}" placeholder="Name of Project" class="fw-bold border-0 text-center bg-warning project-name fields">
             </div>
             <div class="col-4 text-end">
                 <button type="button" id="fake-submit" class="btn btn-sm btn-outline-secondary text-white border-white">Save</button>
@@ -23,7 +23,7 @@ Documents
         </div>
 
         <div class="row m-0">
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-25 pb-2 element">
                     <div class="bg-white h-100 overflow-hidden pb-2">
                         <h4 class="fw-bold fs-5 heading mt-2 ms-2">Topic:</h4>
@@ -37,13 +37,13 @@ Documents
                     </div>
                 </div>
             </div>
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2">Actions</h4>
                 <textarea rows="0" name="action" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->action}}</textarea>
                 </div>
             </div>
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: limegreen;" class="text-white fw-bold me-3 ps-2 pe-2">G</span>Required Outcomes</h4>
                 <textarea rows="0" name="outcomes" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->outcomes}}</textarea>
@@ -51,20 +51,20 @@ Documents
             </div>
         </div>
         <div class="row m-0">
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: darkred;" class="text-white fw-bold me-3 ps-2 pe-2">A</span>Case for Action</h4>
                 <textarea rows="0" name="case_for_action" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->case_for_action}}</textarea>
                 </div>
             </div>
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: orange;" class="text-white fw-bold me-3 ps-2 pe-2">B</span>Barrier To Success</h4>
                 <textarea rows="0" name="barrier_to_success" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->barrier_to_success}}</textarea>
 
                 </div>
             </div>
-            <div class="col-4 p-2" style="height:50vh;">
+            <div class="col-4 p-2 element-container">
                 <div class="h-100 element bg-white overflow-hidden pb-2">
                 <h4 class="fw-bold fs-5 heading mt-2 ms-2"><span style="background-color: blue;" class="text-white fw-bold me-3 ps-2 pe-2">U</span>Unintended Negative Consequences</h4>
                 <textarea rows="0" name="consequences" class="w-100 h-100 border-0 overflow-auto p-2 fields">{{$data->consequences}}</textarea>

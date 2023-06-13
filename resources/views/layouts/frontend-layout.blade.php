@@ -12,11 +12,12 @@
         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{asset('assets/izitoast/css/iziToast.min.css')}}">
         <link href="{{asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
-
+        <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 
         <!-- Icons Css -->        
     </head>
-    <body >
+    <body class="bg-warning">
         @yield('content')
         <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('assets/izitoast/js/iziToast.min.js')}}"></script>

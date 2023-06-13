@@ -1,14 +1,14 @@
 /*.extends{
 	transition: width 1s, height 1s;
 }*/
-@font-face {
+/*@font-face {
   font-family: inter;
   src: url('../fonts/inter/Inter-VariableFont_slnt,wght.ttf');
-}
-
-/**{
-  font-family: inter !important;
 }*/
+
+*{
+  font-family: inter !important;
+}
 
 .extends{
 	position: fixed;
@@ -22,12 +22,20 @@
     bottom: 0;
 
 }
+
+.element-container{
+  height: 33vh;
+}
 .element{
     transition: width 3s, height 1s ;
 }
 
 .element textarea{
   outline: none;
+  font-size: 17px;
+  line-height: 24px;
+  line-break: 10px;
+  font-family: 'Fira Sans Regular' !important;
 }
 .extends textarea{
   font-size: 22px;
@@ -38,6 +46,8 @@
 
 .element .heading{
   position: sticky;
+  color: black;
+  font-size: 25px;
 }
 ::placeholder{
   color: black;
@@ -54,13 +64,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: green;
+  background: grey;
   border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: green;
+  background: grey;
 }
 
 .heading-container p{
