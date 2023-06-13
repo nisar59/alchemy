@@ -6,9 +6,9 @@
   src: url('../fonts/inter/Inter-VariableFont_slnt,wght.ttf');
 }
 
-*{
+/**{
   font-family: inter !important;
-}
+}*/
 
 .extends{
 	position: fixed;
